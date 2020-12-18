@@ -1,6 +1,7 @@
 import React from 'react'
 import View from './view'
 import Buttons from './buttons'
+import * as Math from 'mathjs'
 import './App.css'
 
 class Calculator extends React.Component {
@@ -29,7 +30,7 @@ class Calculator extends React.Component {
 
   calculateAnswer() {
     try {
-      let answer = eval(this.state.evaluation)
+      let answer = Math.evaluate(this.state.evaluation)
       this.setState({
         answer: answer
       })
