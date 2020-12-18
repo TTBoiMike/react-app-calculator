@@ -18,9 +18,7 @@ class Calculator extends React.Component {
     this.handleOperator = this.handleOperator.bind(this)
     this.executeOperation = this.executeOperation.bind(this)
     this.calculateAnswer = this.calculateAnswer.bind(this)
-    this.equationToMemory = this.equationToMemory.bind(this)
   }
-}
 
   reset() {
       this.setState({
@@ -38,7 +36,9 @@ class Calculator extends React.Component {
       })
     } catch (e) {
       if (e instanceof SyntaxError) {
-        alert("Operation error. Please amend your calculation.")
+        this.setState({
+          answer: "Error"
+        })
       }
     }
   }
@@ -55,12 +55,12 @@ class Calculator extends React.Component {
       if(element === "+") {
         this.setState((state) => ({
           equation: state.equation + element,
-          evaluation: state.evaluation + "+"
+          evaluation: state.evaluation + element
         }))
       } else if (element === "-") {
         this.setState((state) => ({
           equation: state.equation + element,
-          evaluation: state.evaluation + "-"
+          evaluation: state.evaluation + element
         }))
       } else if (element === "x") {
         this.setState((state) => ({
@@ -72,12 +72,17 @@ class Calculator extends React.Component {
           equation: state.equation + element,
           evaluation: state.evaluation + "/"
         }))
+      } else if (element === ".") {
+        this.setState((state) => ({
+          equation: state.equation + element,
+          evaluation: state.evaluation + element
+        }))
       }
   }
 
   // runs everytime an operator is clicked
   handleOperator(element) {
-    if(element === "C") {
+    if(element === "CLEAR") {
       // cancels calculation
       this.reset();
     } else if (element === "DEL") {
@@ -89,7 +94,7 @@ class Calculator extends React.Component {
     } else if (element === "=") {
       this.calculateAnswer()
     } else if (element == "SAVE") {
-      this.equationToMemory()
+      console.log("SAVE!")
     } else {
       this.executeOperation(element)
     }
