@@ -1,6 +1,5 @@
 import React from 'react'
 import View from './view'
-import Memory from './memory'
 import Buttons from './buttons'
 import './App.css'
 
@@ -118,7 +117,6 @@ class Calculator extends React.Component {
     return (
         <>
       <div className="calculator">
-        <Memory memory={this.state.memory}/>
         <View equation={this.state.equation} answer={this.state.answer}/>
         <Buttons handleclick={this.handleClick} />
       </div>
