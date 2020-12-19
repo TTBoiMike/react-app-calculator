@@ -6,7 +6,6 @@ const Buttons = (props) => {
     const buttons = [0, 1, "+", 2, 3, "-", 4, 5, "÷", 6, 7, "x", 8, 9, ".", "DEL", "CLEAR", "="]
     
     let displayButtons = [];
-    let equals = [];
 
     buttons.forEach((button) => {
         if(isNaN(button)) {

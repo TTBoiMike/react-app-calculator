@@ -13,11 +13,11 @@ class Calculator extends React.Component {
         answer: ""
     }
     this.reset = this.reset.bind(this)
-    this.handleClick = this.handleClick.bind(this)
+    this.calculateAnswer = this.calculateAnswer.bind(this)
     this.handleNumber = this.handleNumber.bind(this)
     this.handleOperator = this.handleOperator.bind(this)
-    this.executeOperation = this.executeOperation.bind(this)
-    this.calculateAnswer = this.calculateAnswer.bind(this)
+    this.handleOperation = this.handleOperation.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
   reset() {
@@ -50,40 +50,8 @@ class Calculator extends React.Component {
     }))
   }
 
-  // executes the operator on state
-  executeOperation(element) {
-      if(element === "+") {
-        this.setState((state) => ({
-          equation: state.equation + element,
-          evaluation: state.evaluation + element
-        }))
-      } else if (element === "-") {
-        this.setState((state) => ({
-          equation: state.equation + element,
-          evaluation: state.evaluation + element
-        }))
-      } else if (element === "x") {
-        this.setState((state) => ({
-          equation: state.equation + element,
-          evaluation: state.evaluation + "*"
-        }))
-      } else if (element === "÷") {
-        this.setState((state) => ({
-          equation: state.equation + element,
-          evaluation: state.evaluation + "/"
-        }))
-      } else if (element === ".") {
-        this.setState((state) => ({
-          equation: state.equation + element,
-          evaluation: state.evaluation + element
-        }))
-      }
-  }
-
-  // runs everytime an operator is clicked
   handleOperator(element) {
     if(element === "CLEAR") {
-      // cancels calculation
       this.reset();
     } else if (element === "DEL") {
       this.setState((state) => ({
@@ -93,14 +61,30 @@ class Calculator extends React.Component {
       }))
     } else if (element === "=") {
       this.calculateAnswer()
-    } else if (element == "SAVE") {
-      console.log("SAVE!")
     } else {
-      this.executeOperation(element)
+      this.handleOperation(element)
     }
   }
 
-  // runs everytime a button is clicked
+  handleOperation(element) {
+    if (element === "x") {
+      this.setState((state) => ({
+          equation: state.equation + element,
+          evaluation: state.evaluation + "*"
+      }))
+    } else if (element === "÷") {
+      this.setState((state) => ({
+        equation: state.equation + element,
+        evaluation: state.evaluation + "/"
+      }))
+    } else {
+      this.setState((state) => ({
+      equation: state.equation + element,
+      evaluation: state.evaluation + element
+      }))
+    }
+  }
+
   handleClick(element) {
     let buttonClicked = element.currentTarget;
     
