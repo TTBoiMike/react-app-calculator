@@ -8,16 +8,7 @@ const Buttons = (props) => {
     let displayButtons = [];
 
     buttons.forEach((button) => {
-        if(isNaN(button)) {
-            displayButtons.push(
-            <Button classname="operator" id={toString(button)} handleclick={props.handleclick}>{button}</Button>
-            )
-
-        } else {
-            displayButtons.push(
-                <Button classname="number" id={toString(button)} handleclick={props.handleclick}>{button}</Button> 
-            )
-        }
+        displayButtons.push(<Button className={isNaN(button) ? "operator" : "number"} id={toString(button)} handleclick={props.handleclick}>{button}</Button>)
     })
 
     return (
