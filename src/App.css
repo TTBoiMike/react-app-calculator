@@ -9,7 +9,11 @@
 *:hover, *:focus, *:active {
     outline: none;
 }
+#root {
+    width: 100%;
+}
 body {
+    padding: 30px;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -26,7 +30,7 @@ p {
     color: rgba(255, 255, 255,0.5)
 }
 .calculator {
-    width: 500px;
+    width: 100%;
     padding: 30px;
     border-radius: 20px;
     background-color: #374353;
@@ -46,13 +50,13 @@ p {
 .buttons {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 30px;
+    grid-gap: 10px;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
 }
 button {
-    height: 75px;
-    font-size: 1.5rem;
+    height: 40px;
+    font-size: 1rem;
     color: aliceblue;
     background-color: rgb(55, 67, 83);
     border: none;
@@ -71,4 +75,14 @@ button:hover {
     -moz-transition: 0.5s;
     -ms-transition: 0.5s;
     -o-transition: 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+    #root {
+        display: flex;
+        justify-content: center;
+    }
+    .calculator {
+        width: 400px;
+    }
 }
